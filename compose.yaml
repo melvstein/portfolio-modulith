@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: 'portfolio_postgres'
+    environment:
+        - 'POSTGRES_DB=portfolio_db'
+        - 'POSTGRES_USER=postgres'
+        - 'POSTGRES_PASSWORD=postgres'
+    ports:
+        - '5432:5432'
+    volumes:
+      - 'postgres_data:/var/lib/postgresql'
+  kafka:
+    image: 'apache/kafka:latest'
+    container_name: 'portfolio_kafka'
+    ports:
+      - '9092:9092'
+volumes:
+    postgres_data:
