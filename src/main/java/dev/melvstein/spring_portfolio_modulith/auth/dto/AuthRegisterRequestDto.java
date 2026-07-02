@@ -33,6 +33,8 @@ public record AuthRegisterRequestDto(
         String contactNumber,
 
         @NotNull(message = "status is required")
-        AuthStatusEnum status
+        AuthStatusEnum status,
+
+        Boolean emailVerified
 ) {
 }

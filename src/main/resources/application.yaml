@@ -1,6 +1,10 @@
 spring:
   application:
     name: spring-portfolio-modulith
+  security:
+    user:
+      name: melvstein
+      password: admin123
   datasource:
     url: jdbc:postgresql://localhost:5432/portfolio_db
     username: postgres
@@ -16,6 +20,15 @@ spring:
     enabled: true
     baseline-on-migrate: true
     clean-disabled: true
+  jackson:
+    time-zone: Asia/Manila
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      properties:
+        spring.json.add.type.headers: true
+    consumer:
+      auto-offset-reset: earliest
 logging:
   level:
     org.flywaydb: INFO

@@ -22,6 +22,7 @@ public class UserMapper {
                 .email(user.getEmail())
                 .contactNumber(user.getContactNumber())
                 .status(user.getStatus())
+                .emailVerified(user.isEmailVerified())
                 .createdAt(Date.from(user.getCreatedAt()))
                 .updatedAt(Date.from(user.getUpdatedAt()))
                 .build();
@@ -39,6 +40,7 @@ public class UserMapper {
                 .email(dto.email())
                 .contactNumber(dto.contactNumber())
                 .status(dto.status())
+                .emailVerified(dto.emailVerified())
                 .createdAt(dto.createdAt().toInstant())
                 .updatedAt(dto.updatedAt().toInstant())
                 .build();
@@ -56,6 +58,7 @@ public class UserMapper {
                 .email(request.email())
                 .contactNumber(request.contactNumber())
                 .status(request.status())
+                .emailVerified(Boolean.TRUE.equals(request.emailVerified()))
                 .build();
     }
 }

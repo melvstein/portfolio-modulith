@@ -1,5 +1,6 @@
 package dev.melvstein.spring_portfolio_modulith.auth.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import dev.melvstein.spring_portfolio_modulith.auth.enm.AuthRoleEnum;
 import dev.melvstein.spring_portfolio_modulith.auth.enm.AuthStatusEnum;
 import lombok.Builder;
@@ -16,7 +17,12 @@ public record UserDto(
         String email,
         String contactNumber,
         AuthStatusEnum status,
+        boolean emailVerified,
+
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         Date createdAt,
+
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         Date updatedAt
 ) {
 }
