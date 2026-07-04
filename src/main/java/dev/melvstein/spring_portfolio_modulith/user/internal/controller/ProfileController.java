@@ -21,7 +21,7 @@ public class ProfileController {
     }
 
     @GetMapping
-    public ResponseEntity<ApiResponseVo> getAllProfiles() {
+    public ResponseEntity<ApiResponseVo<List<Profile>>> getAllProfiles() {
         List<Profile> profiles = profileService.getAllProfiles();
 
         return ResponseEntity.ok(ApiResponseVo.success(profiles));
