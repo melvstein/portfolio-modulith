@@ -1,6 +1,6 @@
 package dev.melvstein.spring_portfolio_modulith.auth.internal.repository;
 
-import dev.melvstein.spring_portfolio_modulith.auth.entity.User;
+import dev.melvstein.spring_portfolio_modulith.auth.api.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,10 +1,8 @@
 package dev.melvstein.spring_portfolio_modulith.user.kafka;
 
-import dev.melvstein.spring_portfolio_modulith.common.kafka.KafkaGroups;
-import dev.melvstein.spring_portfolio_modulith.common.kafka.KafkaTopics;
-import dev.melvstein.spring_portfolio_modulith.common.kafka.event.UserRegisteredEvent;
-import dev.melvstein.spring_portfolio_modulith.user.entity.Profile;
-import dev.melvstein.spring_portfolio_modulith.user.internal.repository.ProfileRepository;
+import dev.melvstein.spring_portfolio_modulith.common.api.kafka.KafkaGroups;
+import dev.melvstein.spring_portfolio_modulith.common.api.kafka.KafkaTopics;
+import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.event.UserRegisteredEvent;
 import dev.melvstein.spring_portfolio_modulith.user.internal.service.ProfileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,11 +1,11 @@
 package dev.melvstein.spring_portfolio_modulith.auth.internal.controller;
 
-import dev.melvstein.spring_portfolio_modulith.auth.dto.AuthRegisterRequestDto;
-import dev.melvstein.spring_portfolio_modulith.auth.entity.User;
+import dev.melvstein.spring_portfolio_modulith.auth.api.dto.AuthRegisterRequestDto;
+import dev.melvstein.spring_portfolio_modulith.auth.api.enm.AuthApiResponseEnum;
+import dev.melvstein.spring_portfolio_modulith.auth.api.entity.User;
 import dev.melvstein.spring_portfolio_modulith.auth.internal.service.UserService;
-import dev.melvstein.spring_portfolio_modulith.auth.mapper.UserMapper;
-import dev.melvstein.spring_portfolio_modulith.auth.vo.AuthRegisterResponseVo;
-import dev.melvstein.spring_portfolio_modulith.common.enm.ApiResponse;
+import dev.melvstein.spring_portfolio_modulith.auth.api.mapper.UserMapper;
+import dev.melvstein.spring_portfolio_modulith.auth.api.vo.AuthRegisterResponseVo;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +29,8 @@ public class UserController {
 
         return ResponseEntity.ok(
                 AuthRegisterResponseVo.builder()
-                        .code(ApiResponse.SUCCESS.getCode())
-                        .message(ApiResponse.SUCCESS.getMessage())
+                        .code(AuthApiResponseEnum.SUCCESS.getCode())
+                        .message(AuthApiResponseEnum.SUCCESS.getMessage())
                         .data(UserMapper.toDto(savedUser))
                         .build()
         );
