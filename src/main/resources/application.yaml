@@ -23,7 +23,7 @@ spring:
   jackson:
     time-zone: Asia/Manila
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: localhost:29092
     producer:
       properties:
         spring.json.add.type.headers: true
@@ -32,3 +32,19 @@ spring:
 logging:
   level:
     org.flywaydb: INFO
+info:
+  app:
+    name: Portfolio API
+    version: 1.0.0
+    developer: Melvstein
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: when-authorized
