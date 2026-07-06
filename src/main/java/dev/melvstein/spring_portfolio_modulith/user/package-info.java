@@ -1,6 +1,8 @@
 @ApplicationModule(
         allowedDependencies = {
                 "auth::kafka-event",
+                "auth::dto",
+                "auth::facade",
                 "common::vo"
         }
 )

@@ -22,7 +22,7 @@ public class UserRegisteredListener {
             topics = KafkaTopics.USER_REGISTERED,
             groupId = KafkaGroups.USERS
     )
-    public void handle(UserRegisteredEvent event) {
+    public void handleRegister(UserRegisteredEvent event) {
         log.info("Received UserRegisteredEvent {}", event);
 
         profileService.createProfile(event);

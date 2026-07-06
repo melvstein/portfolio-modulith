@@ -7,7 +7,6 @@ public class ModularityTest {
 
     @Test
     void verifiesModularStructure() {
-        ApplicationModules.of(SpringPortfolioModulithApplication.class)
-                .verify();
+        ApplicationModules.of(SpringPortfolioModulithApplication.class).verify();
     }
 }

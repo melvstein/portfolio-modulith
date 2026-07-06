@@ -14,8 +14,8 @@ public record ApiResponseVo<T>(
         T data
 ) implements BaseResponseVo {
 
-    public static ApiResponseVo error(ApiResponseEnum response) {
-        return ApiResponseVo.builder()
+    public static <T> ApiResponseVo<T> error(ApiResponseEnum response) {
+        return ApiResponseVo.<T>builder()
                 .code(response.getCode())
                 .message(response.getMessage())
                 .build();
@@ -29,8 +29,8 @@ public record ApiResponseVo<T>(
                 .build();
     }
 
-    public ApiResponseVo success() {
-        return ApiResponseVo.builder()
+    public static <T> ApiResponseVo<T> success() {
+        return ApiResponseVo.<T>builder()
                 .code(ApiResponseImpl.SUCCESS.getCode())
                 .message(ApiResponseImpl.SUCCESS.getMessage())
                 .build();
