@@ -1,8 +1,8 @@
-package dev.melvstein.spring_portfolio_modulith.audit.api.kafka;
+package dev.melvstein.spring_portfolio_modulith.audit.api.kafka.listener;
 
 import dev.melvstein.spring_portfolio_modulith.audit.internal.service.AuditService;
-import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.event.AuditLogEvent;
-import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.event.UserRegisteredEvent;
+import dev.melvstein.spring_portfolio_modulith.common.api.kafka.event.AuditLogEvent;
+import dev.melvstein.spring_portfolio_modulith.common.api.kafka.event.UserRegisteredEvent;
 import dev.melvstein.spring_portfolio_modulith.common.api.kafka.KafkaGroups;
 import dev.melvstein.spring_portfolio_modulith.common.api.kafka.KafkaTopics;
 import lombok.extern.slf4j.Slf4j;

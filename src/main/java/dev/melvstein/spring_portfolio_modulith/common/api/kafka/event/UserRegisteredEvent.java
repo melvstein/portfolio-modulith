@@ -1,4 +1,4 @@
-package dev.melvstein.spring_portfolio_modulith.auth.api.kafka.event;
+package dev.melvstein.spring_portfolio_modulith.common.api.kafka.event;
 
 import lombok.Builder;
 

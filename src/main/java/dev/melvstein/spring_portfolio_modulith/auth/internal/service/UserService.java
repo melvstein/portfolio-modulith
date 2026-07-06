@@ -2,18 +2,18 @@ package dev.melvstein.spring_portfolio_modulith.auth.internal.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.melvstein.spring_portfolio_modulith.audit.api.enm.AuditActionEnum;
-import dev.melvstein.spring_portfolio_modulith.audit.api.enm.AuditEntityTpeEnum;
-import dev.melvstein.spring_portfolio_modulith.audit.api.enm.AuditModuleEnum;
+import dev.melvstein.spring_portfolio_modulith.common.api.enm.ActionEnum;
+import dev.melvstein.spring_portfolio_modulith.common.api.enm.EntityTpeEnum;
+import dev.melvstein.spring_portfolio_modulith.common.api.enm.ModuleEnum;
 import dev.melvstein.spring_portfolio_modulith.auth.api.dto.AuthUserUpdateRequest;
 import dev.melvstein.spring_portfolio_modulith.auth.api.enm.AuthApiResponseEnum;
 import dev.melvstein.spring_portfolio_modulith.auth.api.entity.User;
-import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.event.AuditLogEvent;
+import dev.melvstein.spring_portfolio_modulith.common.api.kafka.event.AuditLogEvent;
 import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.publisher.UserUpdatedPublisher;
 import dev.melvstein.spring_portfolio_modulith.auth.internal.repository.UserRepository;
 import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.publisher.UserRegisteredPublisher;
 import dev.melvstein.spring_portfolio_modulith.common.api.exception.ApiException;
-import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.event.UserRegisteredEvent;
+import dev.melvstein.spring_portfolio_modulith.common.api.kafka.event.UserRegisteredEvent;
 import dev.melvstein.spring_portfolio_modulith.common.utils.RequestHeaderUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -57,9 +57,9 @@ public class UserService {
         String userAgent = RequestHeaderUtils.getUserAgent();
 
         AuditLogEvent auditLog = AuditLogEvent.builder()
-                .module(AuditModuleEnum.AUTH)
-                .action(AuditActionEnum.CREATE)
-                .entityType(AuditEntityTpeEnum.USER)
+                .module(ModuleEnum.AUTH)
+                .action(ActionEnum.CREATE)
+                .entityType(EntityTpeEnum.USER)
                 .entityId(savedUser.getId())
                 .actorId(null) // Set the actorId if available
                 .description("User registered with username: " + savedUser.getUsername())
@@ -173,9 +173,9 @@ public class UserService {
         JsonNode after = objectMapper.valueToTree(savedUser);
 
         AuditLogEvent auditLog = AuditLogEvent.builder()
-                .module(AuditModuleEnum.AUTH)
-                .action(AuditActionEnum.UPDATE)
-                .entityType(AuditEntityTpeEnum.USER)
+                .module(ModuleEnum.AUTH)
+                .action(ActionEnum.UPDATE)
+                .entityType(EntityTpeEnum.USER)
                 .entityId(savedUser.getId())
                 .actorId(null) // Set the actorId if available
                 .description("User updated with username: " + savedUser.getUsername())

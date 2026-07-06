@@ -1,6 +1,6 @@
 package dev.melvstein.spring_portfolio_modulith.auth.api.kafka.publisher;
 
-import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.event.AuditLogEvent;
+import dev.melvstein.spring_portfolio_modulith.common.api.kafka.event.AuditLogEvent;
 import dev.melvstein.spring_portfolio_modulith.common.api.kafka.KafkaTopics;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;

@@ -2,9 +2,9 @@ package dev.melvstein.spring_portfolio_modulith.audit.api.entity;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import dev.melvstein.spring_portfolio_modulith.audit.api.enm.AuditActionEnum;
-import dev.melvstein.spring_portfolio_modulith.audit.api.enm.AuditEntityTpeEnum;
-import dev.melvstein.spring_portfolio_modulith.audit.api.enm.AuditModuleEnum;
+import dev.melvstein.spring_portfolio_modulith.common.api.enm.ActionEnum;
+import dev.melvstein.spring_portfolio_modulith.common.api.enm.EntityTpeEnum;
+import dev.melvstein.spring_portfolio_modulith.common.api.enm.ModuleEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,13 +33,13 @@ public class AuditLog {
     private UUID id;
 
     @Enumerated(EnumType.STRING)
-    private AuditModuleEnum module;
+    private ModuleEnum module;
 
     @Enumerated(EnumType.STRING)
-    private AuditActionEnum action;
+    private ActionEnum action;
 
     @Enumerated(EnumType.STRING)
-    private AuditEntityTpeEnum entityType;
+    private EntityTpeEnum entityType;
 
     private UUID entityId;
     private UUID actorId;

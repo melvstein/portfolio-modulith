@@ -1,6 +1,6 @@
-package dev.melvstein.spring_portfolio_modulith.audit.api.enm;
+package dev.melvstein.spring_portfolio_modulith.common.api.enm;
 
-public enum AuditActionEnum {
+public enum ActionEnum {
 
     CREATE,
     UPDATE,

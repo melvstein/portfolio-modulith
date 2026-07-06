@@ -2,7 +2,7 @@ package dev.melvstein.spring_portfolio_modulith.user.internal.service;
 
 import dev.melvstein.spring_portfolio_modulith.auth.api.dto.UserDto;
 import dev.melvstein.spring_portfolio_modulith.auth.api.facade.AuthFacade;
-import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.event.UserRegisteredEvent;
+import dev.melvstein.spring_portfolio_modulith.common.api.kafka.event.UserRegisteredEvent;
 import dev.melvstein.spring_portfolio_modulith.user.api.dto.UserProfileDto;
 import dev.melvstein.spring_portfolio_modulith.user.api.entity.Profile;
 import dev.melvstein.spring_portfolio_modulith.user.api.mapper.ProfileMapper;

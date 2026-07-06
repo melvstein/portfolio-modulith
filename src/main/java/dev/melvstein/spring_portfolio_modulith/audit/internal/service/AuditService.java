@@ -2,7 +2,7 @@ package dev.melvstein.spring_portfolio_modulith.audit.internal.service;
 
 import dev.melvstein.spring_portfolio_modulith.audit.api.entity.AuditLog;
 import dev.melvstein.spring_portfolio_modulith.audit.internal.repository.AuditRepository;
-import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.event.AuditLogEvent;
+import dev.melvstein.spring_portfolio_modulith.common.api.kafka.event.AuditLogEvent;
 import org.springframework.stereotype.Service;
 
 @Service

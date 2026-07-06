@@ -4,7 +4,9 @@
                 "auth::dto",
                 "auth::enm",
                 "auth::facade",
-                "common::vo"
+                "common::vo",
+                "common::enm",
+                "common::kafka-event"
         }
 )
 package dev.melvstein.spring_portfolio_modulith.audit;

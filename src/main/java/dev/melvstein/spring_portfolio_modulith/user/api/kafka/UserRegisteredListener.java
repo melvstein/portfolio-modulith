@@ -2,7 +2,7 @@ package dev.melvstein.spring_portfolio_modulith.user.api.kafka;
 
 import dev.melvstein.spring_portfolio_modulith.common.api.kafka.KafkaGroups;
 import dev.melvstein.spring_portfolio_modulith.common.api.kafka.KafkaTopics;
-import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.event.UserRegisteredEvent;
+import dev.melvstein.spring_portfolio_modulith.common.api.kafka.event.UserRegisteredEvent;
 import dev.melvstein.spring_portfolio_modulith.user.internal.service.ProfileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
