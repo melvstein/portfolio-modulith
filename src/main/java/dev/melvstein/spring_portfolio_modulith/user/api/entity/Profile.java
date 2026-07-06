@@ -1,4 +1,4 @@
-package dev.melvstein.spring_portfolio_modulith.user.entity;
+package dev.melvstein.spring_portfolio_modulith.user.api.entity;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;

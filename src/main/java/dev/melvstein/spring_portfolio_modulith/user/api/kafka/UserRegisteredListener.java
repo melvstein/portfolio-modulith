@@ -1,4 +1,4 @@
-package dev.melvstein.spring_portfolio_modulith.user.kafka;
+package dev.melvstein.spring_portfolio_modulith.user.api.kafka;
 
 import dev.melvstein.spring_portfolio_modulith.common.api.kafka.KafkaGroups;
 import dev.melvstein.spring_portfolio_modulith.common.api.kafka.KafkaTopics;
@@ -22,8 +22,8 @@ public class UserRegisteredListener {
             topics = KafkaTopics.USER_REGISTERED,
             groupId = KafkaGroups.USERS
     )
-    public void handleRegister(UserRegisteredEvent event) {
-        log.info("Received UserRegisteredEvent {}", event);
+    public void handleUserRegisteredEvent(UserRegisteredEvent event) {
+        log.info("[Profile] Received UserRegisteredEvent {}", event);
 
         profileService.createProfile(event);
     }

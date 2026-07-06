@@ -6,7 +6,7 @@ CREATE TABLE audit.audit_logs (
     entity_id UUID,
     actor_id UUID,
     description TEXT,
-    ip_address INET,
+    ip_address VARCHAR(45),
     user_agent TEXT,
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP

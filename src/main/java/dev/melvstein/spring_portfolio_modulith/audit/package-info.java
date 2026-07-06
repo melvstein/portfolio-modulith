@@ -7,6 +7,6 @@
                 "common::vo"
         }
 )
-package dev.melvstein.spring_portfolio_modulith.user;
+package dev.melvstein.spring_portfolio_modulith.audit;
 
 import org.springframework.modulith.ApplicationModule;

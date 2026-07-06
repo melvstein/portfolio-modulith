@@ -1,6 +1,6 @@
 package dev.melvstein.spring_portfolio_modulith.user.internal.repository;
 
-import dev.melvstein.spring_portfolio_modulith.user.entity.Profile;
+import dev.melvstein.spring_portfolio_modulith.user.api.entity.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
