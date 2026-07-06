@@ -44,6 +44,19 @@ services:
     environment:
       KAFKA_CLUSTERS_0_NAME: portfolio
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: portfolio_rabbitmq
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"    # AMQP
+      - "15672:15672"  # Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
 
 volumes:
   postgres_data:
+  rabbitmq_data:

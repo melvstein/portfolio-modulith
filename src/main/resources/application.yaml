@@ -29,6 +29,11 @@ spring:
         spring.json.add.type.headers: true
     consumer:
       auto-offset-reset: earliest
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
 logging:
   level:
     org.flywaydb: INFO
