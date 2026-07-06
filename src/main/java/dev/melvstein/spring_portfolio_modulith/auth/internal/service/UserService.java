@@ -1,11 +1,15 @@
 package dev.melvstein.spring_portfolio_modulith.auth.internal.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.melvstein.spring_portfolio_modulith.audit.api.enm.AuditActionEnum;
 import dev.melvstein.spring_portfolio_modulith.audit.api.enm.AuditEntityTpeEnum;
 import dev.melvstein.spring_portfolio_modulith.audit.api.enm.AuditModuleEnum;
 import dev.melvstein.spring_portfolio_modulith.auth.api.dto.AuthUserUpdateRequest;
 import dev.melvstein.spring_portfolio_modulith.auth.api.enm.AuthApiResponseEnum;
 import dev.melvstein.spring_portfolio_modulith.auth.api.entity.User;
+import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.event.AuditLogEvent;
+import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.publisher.UserUpdatedPublisher;
 import dev.melvstein.spring_portfolio_modulith.auth.internal.repository.UserRepository;
 import dev.melvstein.spring_portfolio_modulith.auth.api.kafka.publisher.UserRegisteredPublisher;
 import dev.melvstein.spring_portfolio_modulith.common.api.exception.ApiException;
@@ -17,7 +21,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.net.InetAddress;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,6 +32,8 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserRegisteredPublisher userRegisteredPublisher;
+    private final UserUpdatedPublisher userUpdatedPublisher;
+    private final ObjectMapper objectMapper;
 
     public User save(User user) {
         if (userRepository.existsByUsername(user.getUsername())) {
@@ -51,7 +56,7 @@ public class UserService {
         String ipAddess = RequestHeaderUtils.getIpAddress();
         String userAgent = RequestHeaderUtils.getUserAgent();
 
-        UserRegisteredEvent.AuditLog auditLog = UserRegisteredEvent.AuditLog.builder()
+        AuditLogEvent auditLog = AuditLogEvent.builder()
                 .module(AuditModuleEnum.AUTH)
                 .action(AuditActionEnum.CREATE)
                 .entityType(AuditEntityTpeEnum.USER)
@@ -89,6 +94,8 @@ public class UserService {
     public User updateUserById(UUID userId, AuthUserUpdateRequest request) {
         User existingUser = userRepository.findById(userId)
                 .orElseThrow(() -> new ApiException(AuthApiResponseEnum.USER_NOT_FOUND));
+
+        JsonNode before = objectMapper.valueToTree(existingUser);
 
         if (request.role() != null && !request.role().equals(existingUser.getRole())) {
             log.info("[updateUserById] updating user role for userId: {} from {} to {}", userId, existingUser.getRole(), request.role());
@@ -159,6 +166,27 @@ public class UserService {
             existingUser.setEmailVerified(request.emailVerified());
         }
 
-        return userRepository.save(existingUser);
+        User savedUser = userRepository.save(existingUser);
+
+        String ipAddess = RequestHeaderUtils.getIpAddress();
+        String userAgent = RequestHeaderUtils.getUserAgent();
+        JsonNode after = objectMapper.valueToTree(savedUser);
+
+        AuditLogEvent auditLog = AuditLogEvent.builder()
+                .module(AuditModuleEnum.AUTH)
+                .action(AuditActionEnum.UPDATE)
+                .entityType(AuditEntityTpeEnum.USER)
+                .entityId(savedUser.getId())
+                .actorId(null) // Set the actorId if available
+                .description("User updated with username: " + savedUser.getUsername())
+                .ipAddress(ipAddess)
+                .userAgent(userAgent)
+                .before(before)
+                .after(after)
+                .build();
+
+        userUpdatedPublisher.publish(auditLog);
+
+        return savedUser;
     }
 }
